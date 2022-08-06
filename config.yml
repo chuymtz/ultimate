@@ -1,6 +1,6 @@
 screen:
-  width: 400
-  height: 800
+  width: 800
+  height: 400
   border: 20
   fgColor: white
   bgColor: black
