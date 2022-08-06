@@ -19,17 +19,19 @@ clock = pygame.time.Clock()
 test_font = pygame.font.Font('font/Pixeltype.ttf', 50 )
 text_surf = test_font.render('Hola Chuy', False, 'Black')
 
-sky_surf = pygame.image.load('graphics/sky.png')
-ground_surf = pygame.image.load('graphics/ground.png')
+sky_surf = pygame.image.load('graphics/sky.png').convert()
+ground_surf = pygame.image.load('graphics/ground.png').convert()
 
 # CHARACTERS ----------------------------------------------------------------------------+
 
-snail_surf = pygame.image.load('graphics/snail/snail1.png')
+snail_surf = pygame.image.load('graphics/snail/snail1.png').convert_alpha()
+snail_rect = snail_surf.get_rect(midbottom = (500,300))
 snail_width, snail_height = snail_surf.get_size()
-snail_x = 200
-snail_y = 275
 snail_step = -4
 
+player_surf = pygame.image.load('graphics/player/player_walk_1.png').convert_alpha()
+player_rect = player_surf.get_rect(midbottom=(80, 300))
+player_step = 1
 
 # Game loop ----------------------------------------------------------------------------+
 while True:
@@ -41,13 +43,15 @@ while True:
     screen.blit(sky_surf, (0,0))
     screen.blit(ground_surf, (0,300))
     screen.blit(text_surf, (300, 50))    
+      
+    screen.blit(player_surf,player_rect)
+    player_rect.left += player_step
     
-    screen.blit(snail_surf, (snail_x, snail_y))    
+    screen.blit(snail_surf, snail_rect)    
+    snail_rect.left += snail_step
     
-    snail_x += snail_step
-    
-    if snail_x <= -snail_width:
-        snail_x = WIDTH + snail_width
+    if snail_rect.right <= 0:
+        snail_rect.left = WIDTH
     
     
     pygame.display.update()
