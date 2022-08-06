@@ -1,0 +1,26 @@
+screen:
+  width: 400
+  height: 800
+  border: 20
+  fgColor: white
+  bgColor: black
+ball:
+  radius: 20
+  color: blue
+  velocity: 1
+clock:
+  timeframe: 60
+paddle:
+  width: 10
+  height: 80
+  color: green
+score: 
+  lives: 5
+  score: 0
+surfaces:
+  test:
+    height: 200
+    width: 100
+    x: 200
+    y: 100
+    color: red
